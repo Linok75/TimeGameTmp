@@ -38,7 +38,7 @@ class Model_Building extends Model_Template {
         $sql = 'DELETE FROM building WHERE idbuilding = ?';
         $this->deleteBuilding = Controller_Template::$db->prepare($sql);
 
-		$sql = 'INSERT INTO building VALUES (?,?,?)';
+		$sql = 'INSERT INTO building (name, maxlv) VALUES (?,?)';
 		$this->insertBuilding = Controller_Template::$db->prepare($sql);
 		
 		$sql = 'SELECT * FROM ownedbuilding WHERE idgame = ?';
@@ -81,8 +81,8 @@ class Model_Building extends Model_Template {
         return $this->deleteBuilding->execute(array($idbuilding));
     }
 	
-	public function createBuilding($idbuilding,$name,$maxlv){
-        return $this->insertBuilding->execute(array($idbuilding,$name,$maxlv));
+	public function createBuilding($name,$maxlv){
+        return $this->insertBuilding->execute(array($name,$maxlv));
     }
 	
 	public function getAllOwnedBuilding($idgame){
