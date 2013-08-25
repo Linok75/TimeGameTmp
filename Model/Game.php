@@ -178,7 +178,7 @@ class Model_Game extends Model_Template {
 	}
 	
 	public function setMembernumber($idguild){
-        return $this->updateMembernumber^->execute(array($idguild));
+        return $this->updateMembernumber->execute(array($idguild));
     }
 	
 	public function setDescription($idguild){

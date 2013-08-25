@@ -59,19 +59,19 @@ class Model_Army extends Model_Template {
 	}
 	
 	public function setName ($newName,$idarmy) {
-		return $this->updateName->execute(array($newName,$idarmy);
+		return $this->updateName->execute(array($newName,$idarmy));
 	}
 	
 	public function setAtkpower ($newAtkpower,$idarmy) {
-		return $this->updateAtkpower->execute(array($newAtkpower,$idarmy);
+		return $this->updateAtkpower->execute(array($newAtkpower,$idarmy));
 	}
 	
 	public function setDefpower ($newDefpower,$idarmy) {
-		return $this->updateDefpower->execute(array($newDefpower,$idarmy);
+		return $this->updateDefpower->execute(array($newDefpower,$idarmy));
 	}
 	
 	public function setSpeed ($newSpeed,$idarmy) {
-		return $this->updateSpeed->execute(array($newSpeed,$idarmy);
+		return $this->updateSpeed->execute(array($newSpeed,$idarmy));
 	}
 		
 	public function createArmy($name,$atkpower,$defpower,$speed){
