@@ -64,3 +64,4 @@ class Model_Account extends Model_Template {
         return $this->insertAccount->execute(array($nickname,$mail,$password));
     }
 }
+?>

@@ -101,3 +101,4 @@ class Model_Building extends Model_Template {
 		return $this->deleteOne->execute(array($idgame,$idbuilding));
 	}
 }
+?>
