@@ -1,6 +1,6 @@
 <?php
 class MyPDO extends PDO{
-
+// $dsn = $bdd
 	public function __construct($dsn, $user, $password){
 		parent::__construct($dsn, $user, $password);
 		$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
