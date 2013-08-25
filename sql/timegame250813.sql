@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: 127.0.0.1
--- Généré le: Dim 25 Août 2013 à 02:37
+-- Généré le: Dim 25 Août 2013 à 04:13
 -- Version du serveur: 5.6.11-log
 -- Version de PHP: 5.4.14
 
@@ -50,10 +50,10 @@ CREATE TABLE IF NOT EXISTS `age` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `agerequirment`
+-- Structure de la table `agerequirement`
 --
 
-CREATE TABLE IF NOT EXISTS `agerequirment` (
+CREATE TABLE IF NOT EXISTS `agerequirement` (
   `idage` int(11) NOT NULL,
   `idbuilding` int(11) NOT NULL,
   `lv` int(11) NOT NULL,
@@ -226,11 +226,11 @@ CREATE TABLE IF NOT EXISTS `server` (
 --
 
 --
--- Contraintes pour la table `agerequirment`
+-- Contraintes pour la table `agerequirement`
 --
-ALTER TABLE `agerequirment`
-  ADD CONSTRAINT `agerequirment_ibfk_1` FOREIGN KEY (`idage`) REFERENCES `age` (`idage`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `agerequirment_ibfk_2` FOREIGN KEY (`idbuilding`) REFERENCES `building` (`idbuilding`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `agerequirement`
+  ADD CONSTRAINT `agerequirement_ibfk_1` FOREIGN KEY (`idage`) REFERENCES `age` (`idage`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `agerequirement_ibfk_2` FOREIGN KEY (`idbuilding`) REFERENCES `building` (`idbuilding`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `game`
