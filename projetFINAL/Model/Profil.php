@@ -5,7 +5,7 @@
 class Model_Profil extends Model_Template{
 
 	protected $insertion;
-        protected $updateProfil;
+    protected $updateProfil;
 	protected $updateLastCo;
 	protected $updateStatut;
 	protected $updateAvatar;
