@@ -1,6 +1,8 @@
 <?php
 class Model_Army extends Model_Template {
-	
+		
+		/*army*/
+		
 	protected $selectAll;
 	protected $selectAllById;
 	protected $selectName;
@@ -11,8 +13,19 @@ class Model_Army extends Model_Template {
 	protected $insertArmy;
 	protected $deleteArmy;
 	
+		/*	owned army */
+	
+	protected $selectAllByIdgame;
+	protected $selectOne;
+	protected $updateQuantity;
+	protected $insertOwnedArmy;
+	protected $deleteOwnedArmy;
+	protected $deleteOne;
+	
 	public function __construct() {
 		
+			/* army*/
+			
 		parent::__construct();
 		$sql = 'SELECT * FROM army';
 		$this->selectAll = Controller_Template::$db->prepare($sql);
@@ -40,10 +53,31 @@ class Model_Army extends Model_Template {
 		
 		$sql = 'DELETE FROM army WHERE idarmy = ?';
 		$this->deleteArmy = Controller_Template::$db->prepare($sql);
-	}
-	
-	public function getAll() {
 		
+						/* Owned Army */
+		
+		$sql = 'SELECT * FROM ownedarmy WHERE idgame = ?';
+		$this->selectAllByIdgame = Controller_Template::$db->prepare($sql);
+		
+		$sql = 'SELECT * FROM ownedarmy WHERE idgame = ? AND idarmy = ? '
+		$this->selectOne = Controller_Template::$db->prepare($sql);
+		
+		$sql = 'UPDATE * ownedarmy SET quantity = ? WHERE idarmy = ? AND idgame = ?';
+		$this->updateQuantity = Controller_Template::$db->prepare($sql);
+		
+		$sql = 'INSERT INTO ownedarmy (idarmy,idgame,quantity) VALUES (?,?,?)';
+		$this->insertOwnedArmy = Controller_Template::$db->prepare($sql);
+		
+		$sql = 'DELETE FROM ownedarmy WHERE idgame = ?';
+		$this->deleteOwnedArmy = Controller_Template::$db->prepare($sql);
+		
+		$sql = 'DELETE FROM ownedarmy WHERE idgame = ? AND idarmy = ?';
+		$this->deleteOne = Controller_Template::$db->prepare($sql);
+	}
+		
+		/*army*/
+		
+	public function getAll() {
 		$this->selectAll->execute(array());
 		return $this->selectAll->fetchAll();
 	}
@@ -80,6 +114,32 @@ class Model_Army extends Model_Template {
 	
 	public function removeArmy($idarmy) {
 		return $this->deleteArmy->execute(array($idarmy));
-	} 
+	}
+	
+		/* owned army */
+	
+	public function getAllOwnedArmy($idgame){
+		return $this->selectAllByIdgame->execute(array($idgame));
+	}
+	
+	public function getOneOwnedArmy($idgame,$idarmy){
+		return $this->selectOne->execute(array($idgame));
+	}
+	
+	public function setQuantity($idarmy,$idgame,$quantity){
+		return $this->updateQuantity->execute(array($idarmy,$idgame,$idquantity));
+	}
+	
+	public function createOwnedArmy($idarmy,$idgame,$quantity){
+		return $this->insertOwnedArmy->execute(array($idarmy,$idgame,$quantity);
+	}
+	
+	public function removeOwnedArmy($idgame){
+		return $this->deleteOwnedArmy->execute(array($idgame));
+	}
+	
+	public function removeOne($idarmy,$idgame){
+		return $this->deleteOne->execute(array($idarmy,$idgame));
+	}
 }
 ?>
