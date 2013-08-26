@@ -2,6 +2,7 @@
 class Model_Account extends Model_Template {
 
     protected $selectAllNickname;
+	protected $selectForCheckUnicity;
     protected $selectMail;
     protected $selectPassword;
     protected $updatePassword;
@@ -13,6 +14,9 @@ class Model_Account extends Model_Template {
         parent::__construct();
         $sql = 'SELECT nickname FROM account';
         $this->selectAllNickname = Controller_Template::$db->prepare($sql);
+		
+		$sql = 'SELECT * FROM account WHERE nickname LIKE ? OR mail LIKE ?';
+		$this->selectForCheckUnicity = Controller_Template::$db->prepare($sql);
         
         $sql = 'SELECT mail FROM account WHERE nickname LIKE ?';
         $this->selectMail = Controller_Template::$db->prepare($sql);
@@ -36,6 +40,11 @@ class Model_Account extends Model_Template {
     public function getAllNickname(){
 		$this->selectAllNickname->execute(array());
 		return $this->selectAllNickname->fetchAll();
+	}
+	
+	public function checkUnicity($nickname,$mail){
+		$this->selectForCheckUnicity->execute(array($nickname,$mail));
+		return $this->selectForCheckUnicity->fetchAll();
 	}
 
     public function getMail($nickname){
